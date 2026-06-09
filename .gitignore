@@ -1,3 +1,6 @@
 data/
 data/
 *.tsv
+data/
+.ipynb_checkpoints/
+Untitled.ipynb
