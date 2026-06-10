@@ -24,7 +24,7 @@ Amazon Electronics, Mobile Electronics ve Video Games kategorilerindeki müşter
 ## Proje Adımları
 
 1. **EDA** — Veri keşfi ve görselleştirme
-2. **Labeling** — Embedding + clustering ile otomatik etiketleme
+2. **Labeling** — SentenceTransformer (all-MiniLM) ile embedding, K-Means clustering ile otomatik etiketleme
 3. **Preprocessing** — Metin temizleme ve encoding
 4. **Baseline Model** — TF-IDF + Logistic Regression
 5. **BERT Fine-tuning** — DistilBERT ile fine-tuning
