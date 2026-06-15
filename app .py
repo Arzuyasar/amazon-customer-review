@@ -429,7 +429,7 @@ def kural_dept(metin):
         return {"departman": "Teknik Destek", "guven": 0.25}
     return {"departman": en, "guven": round(min(0.45 + ms * 0.1, 0.90), 2)}
 
-ddef analiz_et(metin, star, analyzer, classifier, zero_shot_ok):
+def analiz_et(metin, star, analyzer, classifier, zero_shot_ok):
     vader = analyzer.polarity_scores(str(metin))["compound"]
 
     sv = star if star else (1 if vader < -0.3 else 4)
