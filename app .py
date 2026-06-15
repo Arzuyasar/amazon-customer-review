@@ -429,40 +429,45 @@ def kural_dept(metin):
         return {"departman": "Teknik Destek", "guven": 0.25}
     return {"departman": en, "guven": round(min(0.45 + ms * 0.1, 0.90), 2)}
 
-def analiz_et(metin, star, analyzer, classifier, zero_shot_ok):
-    vader     = analyzer.polarity_scores(str(metin))["compound"]
-    sv        = star if star else (1 if vader < -0.3 else 4)
-if vader < -0.3:
-    ps = 1.0
-elif vader > 0.2:
-    ps = 0.0
-else:
-    ps = int(sv <= 3) * 0.4 + int(vader < -0.05) * 0.6
-    prob      = ps >= 0.5
+ddef analiz_et(metin, star, analyzer, classifier, zero_shot_ok):
+    vader = analyzer.polarity_scores(str(metin))["compound"]
+
+    sv = star if star else (1 if vader < -0.3 else 4)
+
+    if vader < -0.3:
+        ps = 1.0
+    elif vader > 0.2:
+        ps = 0.0
+    else:
+        ps = int(sv <= 3) * 0.4 + int(vader < -0.05) * 0.6
+
+    prob = ps >= 0.5
     zs_skorlar = {}
 
     if prob:
         kr = kural_dept(metin)
+
         if kr["guven"] < 0.45 and zero_shot_ok:
             try:
-                r  = classifier(str(metin)[:512], ETIKETLER, multi_label=False)
-                dept  = TURKCE[r["labels"][0]]
+                r = classifier(str(metin)[:512], ETIKETLER, multi_label=False)
+                dept = TURKCE[r["labels"][0]]
                 guven = round(r["scores"][0], 3)
                 zs_skorlar = {TURKCE[l]: round(s, 3) for l, s in zip(r["labels"], r["scores"])}
             except Exception:
                 dept, guven = kr["departman"], kr["guven"]
         else:
             dept, guven = kr["departman"], kr["guven"]
+
     else:
         dept, guven = "Arsiv (Olumlu)", 1.0
 
     return {
         "problem_var": prob,
-        "vader":       round(vader, 3),
-        "prob_skor":   round(ps, 2),
-        "departman":   dept,
-        "guven":       guven,
-        "zs_skorlar":  zs_skorlar,
+        "vader": round(vader, 3),
+        "prob_skor": round(ps, 2),
+        "departman": dept,
+        "guven": guven,
+        "zs_skorlar": zs_skorlar,
     }
 
 analyzer, classifier, zero_shot_ok = nlp_yukle()
