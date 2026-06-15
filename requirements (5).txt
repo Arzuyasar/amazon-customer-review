@@ -1,0 +1,14 @@
+streamlit
+pandas
+numpy
+plotly
+scikit-learn
+lightgbm
+vaderSentiment
+transformers==4.40.0
+tokenizers==0.19.0
+huggingface-hub==0.23.0
+sumy
+nltk
+pyarrow
+scipy
