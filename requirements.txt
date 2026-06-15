@@ -5,7 +5,7 @@ plotly
 scikit-learn
 lightgbm
 vaderSentiment
-transformers==4.40.0
+transformers
 sumy
 nltk
 pyarrow
