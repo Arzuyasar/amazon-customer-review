@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -28,334 +27,128 @@ section[data-testid="stSidebar"] {
 
 .block-container { padding-top: 1.5rem; padding-bottom: 2rem; }
 
-/* LOGO */
-.logo-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 4px;
-}
+.logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
 .logo-icon {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     background: linear-gradient(135deg, #6366F1, #8B5CF6);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    box-shadow: 0 0 16px rgba(99,102,241,0.4);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; box-shadow: 0 0 16px rgba(99,102,241,0.4);
 }
 .logo-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700;
     background: linear-gradient(135deg, #818CF8, #C084FC);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* HERO */
 .hero {
     background: linear-gradient(135deg, #0D1128 0%, #0A0C16 40%, #130D20 100%);
-    border: 1px solid #1E2235;
-    border-radius: 20px;
-    padding: 36px 40px;
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
+    border: 1px solid #1E2235; border-radius: 20px; padding: 36px 40px;
+    margin-bottom: 24px; position: relative; overflow: hidden;
 }
 .hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -60px;
+    content: ''; position: absolute; top: -80px; right: -60px;
     width: 350px; height: 350px;
     background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
     pointer-events: none;
 }
 .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 30%;
+    content: ''; position: absolute; bottom: -60px; left: 30%;
     width: 250px; height: 250px;
     background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%);
     pointer-events: none;
 }
 .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(99,102,241,0.12);
-    border: 1px solid rgba(99,102,241,0.25);
-    color: #818CF8;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 99px;
-    margin-bottom: 16px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25);
+    color: #818CF8; font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; padding: 5px 12px; border-radius: 99px; margin-bottom: 16px;
 }
 .hero-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: #F1F5F9;
-    margin: 0 0 10px 0;
-    line-height: 1.15;
+    font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700;
+    color: #F1F5F9; margin: 0 0 10px 0; line-height: 1.15;
 }
 .hero-title span {
     background: linear-gradient(135deg, #818CF8 0%, #C084FC 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.hero-sub {
-    font-size: 14px;
-    color: #64748B;
-    margin: 0 0 24px 0;
-    line-height: 1.7;
-    max-width: 480px;
-}
-.hero-stats {
-    display: flex;
-    gap: 32px;
-}
-.hero-stat .num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #E2E8F0;
-}
-.hero-stat .lbl {
-    font-size: 11px;
-    color: #475569;
-    margin-top: 2px;
-    letter-spacing: .04em;
-}
+.hero-sub { font-size: 14px; color: #64748B; margin: 0 0 24px 0; line-height: 1.7; max-width: 480px; }
+.hero-stats { display: flex; gap: 32px; }
+.hero-stat .num { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #E2E8F0; }
+.hero-stat .lbl { font-size: 11px; color: #475569; margin-top: 2px; letter-spacing: .04em; }
 
-/* SECTION LABEL */
 .sec-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #334155;
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: #334155; margin-bottom: 8px;
 }
 
-/* SONUÇ KARTLARI */
-.res-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 20px 0 16px;
-}
+.res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0 16px; }
 .res-card {
-    background: #0D0F1A;
-    border: 1px solid #1A1D2E;
-    border-radius: 14px;
-    padding: 20px 22px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color .2s;
+    background: #0D0F1A; border: 1px solid #1A1D2E; border-radius: 14px;
+    padding: 20px 22px; position: relative; overflow: hidden; transition: border-color .2s;
 }
 .res-card:hover { border-color: #2A2D42; }
-.res-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    border-radius: 14px 14px 0 0;
-}
+.res-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 14px 14px 0 0; }
 .res-card.red::before   { background: linear-gradient(90deg, #EF4444, #F87171); }
 .res-card.green::before { background: linear-gradient(90deg, #10B981, #34D399); }
 .res-card.blue::before  { background: linear-gradient(90deg, #6366F1, #818CF8); }
 .res-card.amber::before { background: linear-gradient(90deg, #F59E0B, #FCD34D); }
-.res-card.purple::before{ background: linear-gradient(90deg, #8B5CF6, #C084FC); }
 
-.rc-lbl {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #334155;
-    margin-bottom: 10px;
-}
-.rc-val {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: #F1F5F9;
-    margin-bottom: 4px;
-    line-height: 1;
-}
-.rc-sub {
-    font-size: 12px;
-    color: #475569;
-    margin-top: 6px;
-}
-.rc-icon {
-    position: absolute;
-    top: 16px; right: 16px;
-    font-size: 20px;
-    opacity: 0.4;
-}
+.rc-lbl { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #334155; margin-bottom: 10px; }
+.rc-val { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #F1F5F9; margin-bottom: 4px; line-height: 1; }
+.rc-sub { font-size: 12px; color: #475569; margin-top: 6px; }
+.rc-icon { position: absolute; top: 16px; right: 16px; font-size: 20px; opacity: 0.4; }
 
-/* DEPARTMAN KARTI */
 .dept-wrap {
-    background: #0D0F1A;
-    border: 1px solid #1A1D2E;
-    border-radius: 16px;
-    padding: 24px 28px;
-    margin: 16px 0;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-    overflow: hidden;
+    background: #0D0F1A; border: 1px solid #1A1D2E; border-radius: 16px;
+    padding: 24px 28px; margin: 16px 0; display: flex; align-items: center; gap: 20px;
+    position: relative; overflow: hidden;
 }
 .dept-wrap.problem { border-left: 3px solid #EF4444; }
 .dept-wrap.ok      { border-left: 3px solid #10B981; }
-.dept-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 200px;
-    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.03));
-    pointer-events: none;
-}
 .dept-icon-wrap {
-    width: 52px; height: 52px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    flex-shrink: 0;
+    width: 52px; height: 52px; border-radius: 14px; display: flex;
+    align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
 }
-.dept-info .dept-lbl {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #334155;
-    margin-bottom: 5px;
-}
-.dept-info .dept-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.1;
-}
-.dept-info .dept-desc {
-    font-size: 13px;
-    color: #475569;
-    margin-top: 4px;
-}
-.dept-right {
-    margin-left: auto;
-    text-align: right;
-    flex-shrink: 0;
-}
-.dept-pct {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1;
-}
-.dept-pct-lbl {
-    font-size: 11px;
-    color: #475569;
-    margin-top: 4px;
-}
+.dept-info .dept-lbl { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #334155; margin-bottom: 5px; }
+.dept-info .dept-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.1; }
+.dept-info .dept-desc { font-size: 13px; color: #475569; margin-top: 4px; }
+.dept-right { margin-left: auto; text-align: right; flex-shrink: 0; }
+.dept-pct { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; line-height: 1; }
+.dept-pct-lbl { font-size: 11px; color: #475569; margin-top: 4px; }
 
-/* PROGRESS BAR */
-.prog-wrap {
-    margin-top: 14px;
-}
-.prog-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: #475569;
-    margin-bottom: 6px;
-}
-.prog-bar-bg {
-    height: 6px;
-    background: #1A1D2E;
-    border-radius: 99px;
-    overflow: hidden;
-}
-.prog-bar-fill {
-    height: 100%;
-    border-radius: 99px;
-    transition: width .6s ease;
-}
+.prog-wrap { margin-top: 14px; }
+.prog-label { display: flex; justify-content: space-between; font-size: 11px; color: #475569; margin-bottom: 6px; }
+.prog-bar-bg { height: 6px; background: #1A1D2E; border-radius: 99px; overflow: hidden; }
+.prog-bar-fill { height: 100%; border-radius: 99px; transition: width .6s ease; }
 
-/* DIVIDER */
-.divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #1E2235 30%, #1E2235 70%, transparent);
-    margin: 22px 0;
-}
+.divider { height: 1px; background: linear-gradient(90deg, transparent, #1E2235 30%, #1E2235 70%, transparent); margin: 22px 0; }
 
-/* INFO BOX */
 .info-box {
-    background: rgba(99,102,241,0.06);
-    border: 1px solid rgba(99,102,241,0.15);
-    border-radius: 10px;
-    padding: 12px 16px;
-    font-size: 13px;
-    color: #6366F1;
-    margin-top: 16px;
-    line-height: 1.6;
+    background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15);
+    border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #6366F1;
+    margin-top: 16px; line-height: 1.6;
 }
 
-/* SIDEBAR */
-.sb-section {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #1E293B;
-    margin: 22px 0 10px;
-}
+.sb-section { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #1E293B; margin: 22px 0 10px; }
 .sb-status {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #475569;
-    margin-bottom: 8px;
-    padding: 8px 10px;
-    background: #0A0C14;
-    border-radius: 8px;
-    border: 1px solid #1A1D2E;
+    display: flex; align-items: center; justify-content: space-between; font-size: 12px;
+    color: #475569; margin-bottom: 8px; padding: 8px 10px; background: #0A0C14;
+    border-radius: 8px; border: 1px solid #1A1D2E;
 }
 .sb-dot-green { color: #10B981; font-weight: 600; }
 .sb-dot-red   { color: #EF4444; font-weight: 600; }
-.sb-dept-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
-    border-radius: 8px;
-    margin-bottom: 4px;
-    transition: background .15s;
-}
+.sb-dept-row { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px; margin-bottom: 4px; transition: background .15s; }
 .sb-dept-row:hover { background: #0D0F1A; }
 .sb-dept-name { font-size: 12px; color: #64748B; }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade-1 { animation: fadeUp .35s ease forwards; }
 .fade-2 { animation: fadeUp .35s .08s ease both; }
 .fade-3 { animation: fadeUp .35s .16s ease both; }
 </style>
 """, unsafe_allow_html=True)
 
+# ── NLP YÜKLEME ──────────────────────────────────────────────────────────────
 @st.cache_resource
 def nlp_yukle():
     from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -373,28 +166,95 @@ def nlp_yukle():
         zero_shot_ok = False
     return analyzer, classifier, zero_shot_ok
 
-KURALLAR = {
+# ── PROBLEM KELİMELERİ (departmana özgü) ────────────────────────────────────
+PROBLEM_KELIMELERI_DEPT = {
     "Teknik Destek": [
         "broken","defect","malfunction","not working","stopped working",
-        "hardware","damage","cracked","dead","faulty","repair","doesnt work",
+        "hardware","damage","cracked","dead","faulty","repair",
+        "doesnt work","doesn't work","stopped","fell apart",
+        "freeze","freezing","stuck","unresponsive","corrupt",
+        "overheating","battery dead","screen cracked","no power",
+        "wont turn on","no sound","physical damage",
+        "worst hardware","terrible hardware","awful hardware",
     ],
     "Yazilim Ekibi": [
-        "software","app","crash","bug","update","glitch","freeze","error",
-        "install","compatible","firmware","driver","bluetooth","wifi","sync",
+        "software","app","crash","crashing","bug","update","glitch",
+        "error","install","compatible","firmware","driver","reboot",
+        "bluetooth","wifi","sync","patch","reinstall","lag","slow",
+        "not loading","wont open","keeps closing","login issue",
+        "sign in","timeout","authentication","server","connection issue",
+        "worst app","terrible app","awful app","bad app",
+        "worst software","terrible software","app not working",
     ],
     "Lojistik": [
-        "shipping","delivery","package","arrived","late","damaged box",
-        "missing","lost","never received","wrong item","return","tracking",
+        "delivery","shipping","package","arrived","shipment",
+        "damaged box","missing","lost","never received",
+        "wrong item","not delivered","still waiting","stolen",
+        "opened box","repackaged","weeks late","days late",
+        "late delivery","delayed","delay","customs",
+        "package damaged","worst delivery","terrible delivery",
+        "awful delivery","bad delivery","poor delivery","slow delivery",
+        "worst shipping","terrible shipping","never arrived",
+        "wrong address","package lost","return shipping",
     ],
     "Musteri Hizmetleri": [
         "customer service","support","refund","warranty","response",
-        "replied","contact","ignored","rude","representative","exchange",
+        "replied","contact","ignored","rude","unhelpful",
+        "representative","call center","exchange","complaint","no reply",
+        "not responding","escalate","manager","supervisor","promised",
+        "lied","scam","fraud","dispute","return policy","never called",
+        "worst service","terrible service","awful service","bad service",
+        "poor service","horrible service","worst support","useless support",
     ],
     "Urun Yonetimi": [
-        "design","quality","cheap","material","size","color","uncomfortable",
-        "usability","confusing","misleading","overpriced","build quality","flimsy",
+        "design","quality","cheap","material","size","color",
+        "uncomfortable","usability","confusing","misleading","overpriced",
+        "build quality","poorly made","flimsy","smell","cheap plastic",
+        "breaks easily","not as described","different from photo",
+        "not worth","false advertising","wrong color","wrong size",
+        "terrible product","awful product","horrible product","worst product",
+        "poor quality","bad quality","low quality","cheap quality",
+        "terrible quality","awful quality","not worth the money",
+        "waste of money","disappointing product",
     ],
 }
+
+GENEL_PROBLEM = [
+    "terrible","awful","horrible","worst","useless","disappointed","waste",
+    "regret","never again","do not buy","avoid","zero stars","one star",
+    "not happy","very bad","really bad","extremely bad","issue","problem",
+    "fail","failed","failure","cannot","unable","keeps","still not fixed",
+    "still not working",
+]
+
+POZITIF_IFADELER = {
+    "Lojistik": [
+        "fast delivery","quick delivery","great delivery","perfect delivery",
+        "amazing delivery","excellent delivery","speedy delivery",
+        "fast shipping","quick shipping","free shipping","on time",
+        "arrived on time","arrived quickly","delivered fast",
+        "great packaging","perfect packaging","well packaged",
+    ],
+    "Musteri Hizmetleri": [
+        "great service","excellent service","amazing service",
+        "helpful service","great support","excellent support",
+        "amazing support","helpful support","great customer service",
+        "excellent customer service","fast response","quick response",
+        "very helpful","very responsive",
+    ],
+    "Yazilim Ekibi": [
+        "great app","excellent app","amazing app","works perfectly",
+        "works great","no bugs","runs smoothly","great software",
+        "easy to use","user friendly",
+    ],
+    "Teknik Destek": [
+        "works perfectly","works great","no issues","great hardware",
+        "excellent build","solid build","excellent quality",
+        "perfect condition","no problems",
+    ],
+}
+
+KURALLAR = PROBLEM_KELIMELERI_DEPT
 
 DEPT_CFG = {
     "Teknik Destek":      {"renk":"#60A5FA","bg":"rgba(96,165,250,0.1)","ikon":"🔧","desc":"Donanim & arizalar"},
@@ -420,54 +280,78 @@ TURKCE = {
     "product design or usability issue": "Urun Yonetimi",
 }
 
+# ── FONKSİYONLAR ─────────────────────────────────────────────────────────────
+def metin_problemi_var_mi(metin):
+    metin_lower = str(metin).lower()
+    if any(k in metin_lower for k in GENEL_PROBLEM):
+        return True
+    for kelimeler in PROBLEM_KELIMELERI_DEPT.values():
+        if any(k in metin_lower for k in kelimeler):
+            return True
+    return False
+
 def kural_dept(metin):
-    ml = str(metin).lower()
-    sk = {d: sum(1 for k in ks if k in ml) for d, ks in KURALLAR.items()}
-    en = max(sk, key=sk.get)
-    ms = sk[en]
-    if ms == 0:
+    metin_lower = str(metin).lower()
+    skorlar = {}
+    for dept, kelimeler in PROBLEM_KELIMELERI_DEPT.items():
+        eslesme = sum(1 for k in kelimeler if k in metin_lower)
+        genel   = sum(1 for k in GENEL_PROBLEM if k in metin_lower)
+        skorlar[dept] = eslesme + genel * 0.3
+
+    for dept, pozitif_kelimeler in POZITIF_IFADELER.items():
+        pozitif_var = any(k in metin_lower for k in pozitif_kelimeler)
+        negatif_var = any(k in metin_lower for k in PROBLEM_KELIMELERI_DEPT.get(dept, []))
+        if pozitif_var and not negatif_var:
+            skorlar[dept] = 0
+
+    en_iyi   = max(skorlar, key=skorlar.get)
+    max_skor = skorlar[en_iyi]
+    if max_skor == 0:
         return {"departman": "Teknik Destek", "guven": 0.25}
-    return {"departman": en, "guven": round(min(0.45 + ms * 0.1, 0.90), 2)}
+    guven = round(min(0.45 + max_skor * 0.08, 0.90), 2)
+    return {"departman": en_iyi, "guven": guven}
 
 def analiz_et(metin, star, analyzer, classifier, zero_shot_ok):
-    vader = analyzer.polarity_scores(str(metin))["compound"]
+    vader    = analyzer.polarity_scores(str(metin))["compound"]
+    sv       = star if star else (1 if vader < -0.3 else 4)
+    teknik   = metin_problemi_var_mi(metin)
 
-    sv = star if star else (1 if vader < -0.3 else 4)
-
-    if vader < -0.3:
-        ps = 1.0
-    elif vader > 0.2:
+    if vader > 0.5:
         ps = 0.0
+    elif vader < -0.3:
+        ps = 1.0
+    elif teknik and vader > 0.1:
+        ps = 0.0
+    elif teknik and vader <= 0.1:
+        ps = 1.0
     else:
         ps = int(sv <= 3) * 0.4 + int(vader < -0.05) * 0.6
 
-    prob = ps >= 0.5
+    prob       = ps >= 0.5
     zs_skorlar = {}
 
     if prob:
         kr = kural_dept(metin)
-
         if kr["guven"] < 0.45 and zero_shot_ok:
             try:
-                r = classifier(str(metin)[:512], ETIKETLER, multi_label=False)
-                dept = TURKCE[r["labels"][0]]
+                r     = classifier(str(metin)[:512], ETIKETLER, multi_label=False)
+                dept  = TURKCE[r["labels"][0]]
                 guven = round(r["scores"][0], 3)
                 zs_skorlar = {TURKCE[l]: round(s, 3) for l, s in zip(r["labels"], r["scores"])}
             except Exception:
                 dept, guven = kr["departman"], kr["guven"]
         else:
             dept, guven = kr["departman"], kr["guven"]
-
     else:
         dept, guven = "Arsiv (Olumlu)", 1.0
 
     return {
         "problem_var": prob,
-        "vader": round(vader, 3),
-        "prob_skor": round(ps, 2),
-        "departman": dept,
-        "guven": guven,
-        "zs_skorlar": zs_skorlar,
+        "vader":       round(vader, 3),
+        "prob_skor":   round(ps, 2),
+        "departman":   dept,
+        "guven":       guven,
+        "zs_skorlar":  zs_skorlar,
     }
 
 analyzer, classifier, zero_shot_ok = nlp_yukle()
@@ -507,7 +391,7 @@ with st.sidebar:
         )
 
 # ════════════════════════════════════════════════════════════════════════════
-# SAYFA 1
+# SAYFA 1 — TEK YORUM ANALİZİ
 # ════════════════════════════════════════════════════════════════════════════
 if sayfa == "Tek Yorum Analizi":
 
@@ -529,12 +413,10 @@ if sayfa == "Tek Yorum Analizi":
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([3, 1], gap="medium")
-
     with col1:
         st.markdown("<div class='sec-label'>Musteri Yorumu</div>", unsafe_allow_html=True)
         metin = st.text_area("", placeholder="Yorumu buraya yapistirin...",
                              height=180, label_visibility="collapsed")
-
     with col2:
         st.markdown("<div class='sec-label'>Yildiz Puani</div>", unsafe_allow_html=True)
         star = st.select_slider("", options=[1,2,3,4,5], value=3,
@@ -557,43 +439,37 @@ if sayfa == "Tek Yorum Analizi":
 
         st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
-        # Sonuç kartları
         durum_cls = "red" if s["problem_var"] else "green"
         durum_txt = "⚠️  Problemli" if s["problem_var"] else "✅  Sorunsuz"
         vader_cls = "red" if s["vader"]<-0.05 else "green" if s["vader"]>0.05 else "amber"
 
         st.markdown(
             "<div class='res-grid fade-1'>"
-
             "<div class='res-card " + durum_cls + "'>"
             "<span class='rc-icon'>🎯</span>"
             "<div class='rc-lbl'>Durum</div>"
             "<div class='rc-val'>" + durum_txt + "</div>"
             "<div class='rc-sub'>Problem skoru: " + str(s["prob_skor"]) + "</div>"
             "</div>"
-
             "<div class='res-card " + vader_cls + "'>"
             "<span class='rc-icon'>🧠</span>"
             "<div class='rc-lbl'>Duygu Skoru (VADER)</div>"
             "<div class='rc-val'>" + str(s["vader"]) + "</div>"
             "<div class='rc-sub'>-1.0 negatif &nbsp;·&nbsp; +1.0 pozitif</div>"
             "</div>"
-
             "<div class='res-card blue'>"
             "<span class='rc-icon'>⚡</span>"
             "<div class='rc-lbl'>Siniflandirma Guveni</div>"
             "<div class='rc-val'>%" + str(round(s["guven"]*100)) + "</div>"
             "<div class='rc-sub'>Model karar guveni</div>"
             "</div>"
-
             "</div>",
             unsafe_allow_html=True
         )
 
-        # Departman kartı
-        dept = s["departman"]
-        cfg  = DEPT_CFG.get(dept, {"renk":"#6B7280","bg":"#1A1D27","ikon":"📋","desc":""})
-        cls  = "problem" if s["problem_var"] else "ok"
+        dept      = s["departman"]
+        cfg       = DEPT_CFG.get(dept, {"renk":"#6B7280","bg":"#1A1D27","ikon":"📋","desc":""})
+        cls       = "problem" if s["problem_var"] else "ok"
         guven_pct = round(s["guven"] * 100)
 
         st.markdown(
@@ -616,11 +492,10 @@ if sayfa == "Tek Yorum Analizi":
             unsafe_allow_html=True
         )
 
-        # Zero-shot grafik
         if s["zs_skorlar"]:
             st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
             st.markdown("<div class='sec-label fade-3'>Departman Olasilik Dagilimi</div>", unsafe_allow_html=True)
-            zs = s["zs_skorlar"]
+            zs  = s["zs_skorlar"]
             zdf = pd.DataFrame({"Departman": list(zs.keys()), "Skor": list(zs.values())}).sort_values("Skor")
             renkler = [DEPT_CFG.get(d, {}).get("renk", "#6B7280") for d in zdf["Departman"]]
             fig = go.Figure(go.Bar(
@@ -641,8 +516,8 @@ if sayfa == "Tek Yorum Analizi":
 
         st.markdown(
             "<div class='info-box fade-3'>"
-            "ℹ️ &nbsp;Bu analiz <b>VADER duygu analizi</b> ve <b>kural tabanli siniflandirma</b> kullanir. "
-            "Yildiz puani ve metin duygusu birlikte degerlendirilir."
+            "ℹ️ &nbsp;Bu analiz <b>VADER duygu analizi</b>, <b>kural tabanli siniflandirma</b> "
+            "ve <b>problem kelime tespiti</b> kullanir. Yildiz puani ve metin birlikte degerlendirilir."
             "</div>",
             unsafe_allow_html=True
         )
@@ -673,7 +548,12 @@ elif sayfa == "Toplu CSV Analizi":
     yuklenen = st.file_uploader("CSV dosyasi sec", type=["csv"], label_visibility="collapsed")
 
     if yuklenen:
-        df = pd.read_csv(yuklenen)
+        try:
+            df = pd.read_csv(yuklenen, encoding="utf-8")
+        except UnicodeDecodeError:
+            yuklenen.seek(0)
+            df = pd.read_csv(yuklenen, encoding="latin-1")
+
         c1,c2,c3 = st.columns(3)
         c1.metric("Toplam Satir", f"{len(df):,}")
         c2.metric("Sutun Sayisi", str(df.shape[1]))
@@ -682,7 +562,7 @@ elif sayfa == "Toplu CSV Analizi":
         with st.expander("Veriyi Onizle"):
             st.dataframe(df.head(5), use_container_width=True)
 
-        max_s = st.slider("Kac satir analiz edilsin?", 10, min(500, len(df)), min(100, len(df)))
+        max_s = st.slider("Kac satir analiz edilsin?", 10, min(5000, len(df)), min(200, len(df)))
 
         if st.button("🚀  Analizi Baslat", type="primary", use_container_width=True):
             prog     = st.progress(0)
