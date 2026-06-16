@@ -10,3 +10,4 @@ sumy
 nltk
 pyarrow
 scipy
+torch
