@@ -17,8 +17,41 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; background-color: #080A12; overflow-x: hidden; }
+
+/* Streamlit'in kendi app kapsayıcıları varsayılan olarak beyaz/açık renkli geliyor —
+   bunları da koyu temaya dahil ediyoruz, aksi halde sayfa arka planı kısmen açık görünür */
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stHeader"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stBottomBlockContainer"],
+.main { background-color: #080A12 !important; }
+[data-testid="stHeader"], [data-testid="stToolbar"] { background: transparent !important; }
+
 section[data-testid="stSidebar"] { background: linear-gradient(180deg, #0D0F1A 0%, #10121E 100%); border-right: 1px solid #1A1D2E; }
 .block-container { padding-top: 1.5rem; padding-bottom: 2rem; }
+
+/* Native Streamlit bileşenleri (text area, dosya yükleyici, metrik, dataframe, expander,
+   select, slider, radio, buton) — koyu temaya uyumlu hale getiriliyor, tasarım değişmiyor */
+[data-testid="stTextArea"] textarea { background-color: #0D0F1A !important; color: #E2E8F0 !important; border: 1px solid #1A1D2E !important; }
+[data-testid="stTextArea"] textarea::placeholder { color: #475569 !important; }
+[data-testid="stFileUploaderDropzone"] { background-color: #0D0F1A !important; border: 1px dashed #2A2D42 !important; }
+[data-testid="stFileUploaderDropzone"] *, [data-testid="stFileUploaderDropzoneInstructions"] * { color: #94A3B8 !important; }
+[data-testid="stMetric"] { background-color: #0D0F1A; border: 1px solid #1A1D2E; border-radius: 12px; padding: 14px 18px; }
+[data-testid="stMetricValue"] { color: #F1F5F9 !important; }
+[data-testid="stMetricLabel"] { color: #64748B !important; }
+[data-testid="stDataFrame"], [data-testid="stDataFrame"] > div { background-color: #0D0F1A !important; }
+[data-testid="stExpander"] { background-color: #0D0F1A !important; border: 1px solid #1A1D2E !important; border-radius: 10px; }
+[data-testid="stExpander"] summary { color: #E2E8F0 !important; }
+div[data-baseweb="select"] > div { background-color: #0D0F1A !important; border-color: #1A1D2E !important; color: #E2E8F0 !important; }
+div[data-baseweb="popover"] li { background-color: #0D0F1A !important; color: #E2E8F0 !important; }
+.stSlider [data-baseweb="slider"] div { background-color: #1A1D2E; }
+label, .stRadio label, .stMarkdown, p, span { color: #94A3B8; }
+.stButton button { background: linear-gradient(135deg,#6366F1,#8B5CF6) !important; color: #fff !important; border: none !important; }
+hr { border-color: #1A1D2E !important; }
+[data-testid="stAlert"] { background-color: #0D0F1A !important; }
 
 .logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
 .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #6366F1, #8B5CF6); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 0 16px rgba(99,102,241,0.4); }
@@ -466,9 +499,52 @@ elif sayfa == "Dashboard":
     f = st.file_uploader("Sonuc CSV yukle", type=["csv"], label_visibility="collapsed")
 
     if f:
-        df = pd.read_csv(f)
+        try:
+            df = pd.read_csv(f, encoding="utf-8")
+        except UnicodeDecodeError:
+            f.seek(0)
+            df = pd.read_csv(f, encoding="latin-1")
+
+        # ÖNCEKİ HATA: bu sayfa sadece "Toplu CSV Analizi"ndan indirilmiş,
+        # icinde zaten problem_var/departman sutunu olan bir rapor CSV'si bekliyordu.
+        # Ham bir yorum CSV'si yuklendiginde bu sutunlar bulunamadigi icin
+        # "prob = 0" varsayilana duserek dashboard hep "Problemli: 0" gosteriyordu.
+        # Simdi sutunlar yoksa analiz otomatik olarak burada calistiriliyor.
+        if "problem_var" not in df.columns or "departman" not in df.columns:
+            metin_col = next((c for c in ["review_body", "text", "yorum", "comment"] if c in df.columns), None)
+            if metin_col is None:
+                st.error(
+                    "Bu CSV'de hazır analiz sonucu (problem_var / departman) yok ve analiz "
+                    "edilebilecek bir yorum sütunu da bulunamadı (review_body / text / yorum / comment). "
+                    "Lütfen 'Toplu CSV Analizi' sayfasından indirdiğin raporu, ya da bu sütun adlarından "
+                    "birini içeren ham yorum verisini yükle."
+                )
+                st.stop()
+
+            max_s = min(5000, len(df))
+            st.info(f"Bu CSV'de hazır analiz sonucu bulunmadığı için ilk {max_s} yorum otomatik olarak analiz ediliyor...")
+            df_a = df.head(max_s).copy()
+            prog = st.progress(0)
+            sonuclar = []
+            for i, row in enumerate(df_a.itertuples()):
+                m = str(getattr(row, metin_col))
+                sr = getattr(row, "star_rating", None)
+                try: sr = int(sr)
+                except: sr = None
+                sonuclar.append(analiz_et(m, sr))
+                prog.progress((i + 1) / max_s)
+            prog.empty()
+            df = pd.concat([df_a.reset_index(drop=True), pd.DataFrame(sonuclar)], axis=1)
+
+        # problem_var, CSV'den "True"/"False" string, "TRUE"/"FALSE" (orn. Excel'den gecmisse) ya
+        # da 1/0 olarak geri gelebilir — hepsini guvenli sekilde boolean'a ceviriyoruz, aksi halde
+        # .sum() yanlis ya da sifir sonuc verip "problemler gosterilmiyor" hatasina yol acabiliyordu.
+        df["problem_var"] = df["problem_var"].apply(
+            lambda v: str(v).strip().lower() in ("true", "1", "1.0", "yes")
+        )
+
         toplam = len(df)
-        prob = int(df["problem_var"].sum()) if "problem_var" in df.columns else 0
+        prob = int(df["problem_var"].sum())
 
         k1,k2,k3,k4 = st.columns(4)
         k1.metric("Toplam Yorum", f"{toplam:,}")
