@@ -47,7 +47,6 @@ section[data-testid="stSidebar"] { background: linear-gradient(180deg, #0D0F1A 0
 [data-testid="stExpander"] summary { color: #E2E8F0 !important; }
 div[data-baseweb="select"] > div { background-color: #0D0F1A !important; border-color: #1A1D2E !important; color: #E2E8F0 !important; }
 div[data-baseweb="popover"] li { background-color: #0D0F1A !important; color: #E2E8F0 !important; }
-.stSlider [data-baseweb="slider"] div { background-color: #1A1D2E; }
 label, .stRadio label, .stMarkdown, p, span { color: #94A3B8; }
 .stButton button { background: linear-gradient(135deg,#6366F1,#8B5CF6) !important; color: #fff !important; border: none !important; }
 hr { border-color: #1A1D2E !important; }
