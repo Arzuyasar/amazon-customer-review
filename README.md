@@ -180,7 +180,7 @@ pip install -r requirements.txt
 streamlit run reviewlens_hybrid.py
 ```
 
-> **Veri:** Ham CSV dosyaları repoya dahil değildir (`.gitignore`). Paylaşılan Google Drive klasöründen indirilebilir ya da repodaki `data/labeled_data_full.csv` kullanılabilir.
+> **Veri:** Ham CSV dosyaları repoya dahil değildir (`.gitignore`). Paylaşılan Google Drive klasöründen indirilebilir.
 
 ---
 
