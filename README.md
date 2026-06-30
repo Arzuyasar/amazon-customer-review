@@ -204,6 +204,6 @@ amazon-customer-review/
 
 <div align="center">
 
-Grup NLP Projesi — 2024/2025
+Grup NLP Projesi — 2026
 
 </div>
